@@ -2,7 +2,7 @@
 
 class PropertiesController < ApplicationController
   before_action :set_selects, only: %i[create new edit update]
-  before_action :set_property, except: %i[index]
+  before_action :set_property, except: %i[index create new area_autocomplete]
 
   def index
     @properties = Property.all

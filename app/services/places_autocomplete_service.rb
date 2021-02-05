@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PlacesAutocompleteService
-  HOST ||= 'https://xegr-geography.herokuapp.com/places/autocomplete'
+  HOST ||= 'https://xegr-geography.herokuapp.com/places/autocompl'
   attr_accessor :term
 
   def initialize(term)
@@ -10,7 +10,7 @@ class PlacesAutocompleteService
 
   def call
     Rails.cache.fetch([HOST, term], expires: 1.hour) do
-      JSON.parse(request, symbolized_keys: true)
+      JSON.parse(response, symbolized_keys: true)
     end
   end
 
@@ -18,5 +18,12 @@ class PlacesAutocompleteService
 
   def request
     HTTP.get(HOST, params: { input: term })
+  end
+
+  def response
+    response = request
+    return '[]' if response.status.client_error? || response.status.server_error?
+
+    response
   end
 end

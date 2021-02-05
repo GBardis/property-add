@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dependencies
 
-Things you may want to cover:
+* Postgresql
+* Redis
+* Ruby 2.7 or later
 
-* Ruby version
+## Installation
 
-* System dependencies
+* `bundle install`
 
-* Configuration
+## Local Database Setup
 
-* Database creation
+* `rake db:create`
+* `rake db:migrate`
 
-* Database initialization
+## Rspec Tests
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* `rspec spec`
