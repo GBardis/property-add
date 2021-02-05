@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PlacesAutocompleteService
-  HOST ||= 'https://xegr-geography.herokuapp.com/places/autocompl'
+  HOST ||= 'https://xegr-geography.herokuapp.com/places/autocomplete'
   attr_accessor :term
 
   def initialize(term)
