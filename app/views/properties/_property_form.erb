@@ -1,0 +1,54 @@
+<%= form_for property, url: url, html: { class: 'form' } do |f| %>
+  <div class="form-group">
+    <label for="inputTitle">Title</label>
+    <%= f.text_field :title, class: 'form-control', id: 'inputTitle',
+                     placeholder: "Classified title up to 155 chars" %>
+  </div>
+  <div class="form-group">
+    <label for="inputType">Transaction</label>
+    <%= f.select(:property_transaction,
+                 options_for_select(@property_transaction.collect { |h| [h[:id], h[:name]] },
+                                    property.property_transaction),
+                 { include_blank: '' },
+                 { required: 'true', autofocus: 'true', class: 'form-control', id: 'inputType' }) %>
+  </div>
+  <div class="form-group">
+    <label for="inputType">Type</label>
+    <%= f.select(:property_type,
+                 options_for_select(@property_types.collect { |h| [h[:id], h[:name]] }, property.property_type),
+                 { include_blank: '' },
+                 { required: 'true', autofocus: 'true', class: 'form-control', id: 'inputType' }) %>
+  </div>
+  <div class="form-group">
+    <label for="inputLevels">Levels</label>
+    <%= f.number_field :levels, class: 'form-control', id: 'inputLevels',
+                       placeholder: "Add property levels" %>
+  </div>
+  <div class="form-group">
+    <label for="inputBathRooms">BathRooms</label>
+    <%= f.number_field :bathrooms, class: 'form-control', id: 'inputBathRooms',
+                       placeholder: "Add property bathromos" %>
+  </div>
+  <div class="form-group">
+    <label for="inputArea">Area</label>
+    <div id="search-data" class="form-search autoComplete_wrapper">
+      <%= f.text_field :area, autocomplete: :off, class: 'form-control search-input', id: 'inputArea',
+                       placeholder: "Type in the property's area", type: "text", tabindex: "1" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPrice">Price</label>
+    <%= f.text_field :price, class: 'form-control', id: 'inputPrice',
+                     placeholder: 'Amount' %>
+  </div>
+  <div class="form-group">
+    <label for="inputDescription">Extra description</label>
+    <%= f.text_area :description, class: 'form-control', id: 'inputDescription',
+                    placeholder: 'Type Here' %>
+  </div>
+  <div class="form-group">
+    <%= f.hidden_field :place_id, id: 'placeId' %>
+  </div>
+  <%= f.submit "Submit", class: "btn btn-success btn-lg float-right" %>
+<% end %>
+<%= javascript_pack_tag 'propertyForm', 'data-turbolinks-track': 'reload' %>

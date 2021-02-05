@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <span class="anchor" id="formRegister"></span>
+    <!-- form card register -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="mb-0">New property classified</h3>
+      </div>
+      <div class="card-body">
+        <% if @property.errors.any? %>
+          <ul class="alert alert-danger">
+            <% @property.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <%= render partial: 'properties/property_form', locals: { property: @property, url: { action: 'update' } } %>
+      </div>
+    </div>
+    <!-- /form card register -->
+
+  </div>
+</div>
+<!--/row-->
+
+<br><br><br><br>

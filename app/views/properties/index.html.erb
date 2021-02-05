@@ -1,0 +1,38 @@
+<div class="col-md-12">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Property Transaction</th>
+      <th scope="col">Property Type</th>
+      <th scope="col">Levels</th>
+      <th scope="col">BathRooms</th>
+      <th scope="col">Area</th>
+      <th scope="col">Price</th>
+      <th scope="col"> Extra description</th>
+      <th scope="col"> Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @properties.each_with_index do |property, index| %>
+      <tr>
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= property.title %></td>
+        <td><%= property.property_transaction %></td>
+        <td><%= property.property_type %></td>
+        <td><%= property.levels %></td>
+        <td><%= property.bathrooms %></td>
+        <td><%= property.area %></td>
+        <td><%= property.price %></td>
+        <td><%= property.description %></td>
+        <td>
+          <%= link_to "Edit", edit_property_path(property.id) %>,
+          <%= link_to "Show", property_path(property.id) %>
+          <%= link_to "Delete", property_path(property.id), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

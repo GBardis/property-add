@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PropertyAdd</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>PropertyAdd</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center mb-5">Properties</h2>
+      <ul class="nav nav-fill">
+        <%= link_to "Home", properties_path, class: 'nav-item' %>
+        <%= link_to "New property", new_property_path, class: 'nav-item' %>
+      </ul>
+      <hr class="mb-5">
+      <%= yield %>
+    </div>
+    <!--/col-->
+  </div>
+  <!--/row-->
+  <hr>
+</div>
+<!--/container-->
+</body>
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </html>
